@@ -9,6 +9,10 @@ class App extends React.Component {
     selectedVideo: []
   };
 
+  componentDidMount() {
+    this.onSearchForm("childrens");
+  }
+
   onSearchForm = async (term) => {
     const results = await youtube.get("/search", {
       params: {
@@ -16,7 +20,8 @@ class App extends React.Component {
       }
     });
     this.setState({
-      videos: results.data.items
+      videos: results.data.items,
+      selectedVideo: results.data.items[0]
     });
   };
 
@@ -30,11 +35,19 @@ class App extends React.Component {
     return (
       <div className="ui container">
         <SearchBar onSearchForm={this.onSearchForm} />
-        <VideoDetails video={this.state.selectedVideo} />
-        <VideosList
-          onVideoSelect={this.onVideoSelect}
-          videos={this.state.videos}
-        />
+        <div className="ui grid">
+          <div className="row">
+            <div className="eleven wide column">
+              <VideoDetails video={this.state.selectedVideo} />
+            </div>
+            <div className="five wide column">
+              <VideosList
+                onVideoSelect={this.onVideoSelect}
+                videos={this.state.videos}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
