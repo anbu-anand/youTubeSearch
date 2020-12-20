@@ -5,7 +5,6 @@ import VideoDetails from "./VideoDetails";
 import youtube from "./youtube";
 class App extends React.Component {
   state = {
-    term: "",
     videos: [],
     selectedVideo: []
   };

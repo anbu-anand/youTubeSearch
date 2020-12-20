@@ -3,7 +3,13 @@ import VideoItem from "./VideoItem";
 
 const VideosList = ({ videos, onVideoSelect }) => {
   const renderdList = videos.map((video) => {
-    return <VideoItem onVideoSelect={onVideoSelect} video={video} />;
+    return (
+      <VideoItem
+        onVideoSelect={onVideoSelect}
+        video={video}
+        key={video.id.videoId}
+      />
+    );
   });
 
   return <div className="ui relaxed divided list">{renderdList}</div>;

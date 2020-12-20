@@ -1,7 +1,10 @@
 import React from "react";
 
-const VideoDetails = ({ video }) => {
-  return <div>{!video && video.snippet.title}</div>;
+const VideoDetails = ({ video: { id, snippet, thumbnails } }) => {
+  if (!id) {
+    return <div>loading...</div>;
+  }
+  return <div>{snippet.title}</div>;
 };
 
 export default VideoDetails;

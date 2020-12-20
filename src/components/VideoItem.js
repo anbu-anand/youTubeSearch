@@ -5,7 +5,7 @@ const VideoItem = ({ video, onVideoSelect }) => {
     <div
       className="video-item item"
       key={video.id.videoId}
-      onClick={() => onVideoSelect(video)}
+      onClick={(e) => onVideoSelect(video)}
     >
       <img
         className="ui image"
