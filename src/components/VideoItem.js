@@ -1,8 +1,12 @@
 import React from "react";
-
-const VideoItem = ({ video }) => {
+import "./VideoItem.css";
+const VideoItem = ({ video, onVideoSelect }) => {
   return (
-    <div className="item" key={video.id.videoId}>
+    <div
+      className="video-item item"
+      key={video.id.videoId}
+      onClick={() => onVideoSelect(video)}
+    >
       <img
         className="ui image"
         alt={video.snippet.title}
